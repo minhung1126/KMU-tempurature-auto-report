@@ -2,9 +2,7 @@ import sys
 from random import randint
 
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromiumService
-from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.core.utils import ChromeType
+from selenium.webdriver.edge.options import Options
 
 
 def log_in(
@@ -59,7 +57,14 @@ def main():
     # chrome_options.add_argument("--disable-gpu")
     # driver = webdriver.Chrome(options=chrome_options)
 
-    driver = webdriver.Edge()
+    options = {
+        # 'driver_type': browser,
+        'headless': True,
+        # 'browser_binary_location': shutil.which('microsoft-edge-dev'),
+        # 'webdriver_location': shutil.which('msedgedriver'),
+        'operating_system': 'LINUX'
+    }
+    driver = webdriver.Edge(options=options)
 
     driver.implicitly_wait(30)
 
