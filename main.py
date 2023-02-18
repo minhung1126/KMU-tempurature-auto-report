@@ -51,8 +51,9 @@ def tempurature_report(driver: webdriver.Edge or webdriver.Chrome):
 def main():
     acc, pwd = sys.argv[1:3]
 
-    driver = webdriver.Chrome(service=ChromiumService(
-        ChromeDriverManager(chrome_type=ChromeType.GOOGLE).install()))
+    # driver = webdriver.Chrome(service=ChromiumService(
+    #     ChromeDriverManager(chrome_type=ChromeType.GOOGLE).install()))
+    driver = webdriver.Chrome()
 
     driver.implicitly_wait(30)
 
