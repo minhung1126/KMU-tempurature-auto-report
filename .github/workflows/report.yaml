@@ -14,14 +14,20 @@ jobs:
         with:
           python-version: "3.9"
         
+      - name: Update apt
+        run: |
+          sudo apt update
+
       - name: Install Chrome
         run: |
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          wget --no-verbose https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           sudo apt install -y -f ./google-chrome-stable_current_amd64.deb
 
       - name: Install Chrome driver
         run: |
-          sudo apt install chromium-chromedriver
+          version=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE")
+          wget -qP /tmp/ "https://chromedriver.storage.googleapis.com/${version}/chromedriver_linux64.zip"
+          sudo unzip -o /tmp/chromedriver_linux64.zip -d /usr/bin
       
       - name: Install packages
         run: |
