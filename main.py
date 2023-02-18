@@ -52,7 +52,7 @@ def main():
     acc, pwd = sys.argv[1:3]
 
     driver = webdriver.Chrome(service=ChromiumService(
-        ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()))
+        ChromeDriverManager(chrome_type=ChromeType.GOOGLE).install()))
 
     driver.implicitly_wait(30)
 
