@@ -1,0 +1,26 @@
+name: Report Tempurature
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.9"
+      
+      - name: Install packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+          pip install webdriver-manager
+      
+      - name: Report
+        env:
+          acc: ${{ secrets.acc }}
+          pwd: ${{ secrets.pwd }}
+        run: |
+          python main.py $acc $pwd
