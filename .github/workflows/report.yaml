@@ -39,7 +39,7 @@ jobs:
 
       - name: Install Edger driver
         run: |
-          wget https://msedgedriver.azureedge.net/95.0.1020.5/edgedriver_linux64.zip -P ~/
+          wget --no-verbose https://msedgedriver.azureedge.net/95.0.1020.5/edgedriver_linux64.zip -P ~/
           unzip ~/edgedriver_linux64.zip -d ~/
           rm ~/edgedriver_linux64.zip
           sudo mv -f ~/msedgedriver /usr/local/share/
