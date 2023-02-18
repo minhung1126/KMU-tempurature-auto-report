@@ -2,8 +2,9 @@ import sys
 from random import randint
 
 from selenium import webdriver
-from selenium.webdriver.edge.service import Service as EdgeService
-from webdriver_manager.microsoft import EdgeChromiumDriver
+from selenium.webdriver.chrome.service import Service as ChromiumService
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.core.utils import ChromeType
 
 
 def log_in(
@@ -50,8 +51,9 @@ def tempurature_report(driver: webdriver.Edge or webdriver.Chrome):
 def main():
     acc, pwd = sys.argv[1:3]
 
-    driver = webdriver.Edge(service=EdgeService(
-        EdgeChromiumDriver().install()))
+    driver = webdriver.Chrome(service=ChromiumService(
+        ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()))
+
     driver.implicitly_wait(30)
 
     log_in(driver, acc, pwd)
